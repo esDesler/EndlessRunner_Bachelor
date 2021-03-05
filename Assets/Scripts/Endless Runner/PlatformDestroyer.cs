@@ -19,7 +19,7 @@ public class PlatformDestroyer : MonoBehaviour
     {
         if (transform.position.z < platformDestructionPoint.transform.position.z)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

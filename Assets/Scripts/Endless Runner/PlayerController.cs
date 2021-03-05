@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    private float moveSpeedStore;
+
     public float jumpForce;
     public float gravityStrength;
 
@@ -14,12 +16,18 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsObstacle;
 
+    private Animator myAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        myAnimator = GetComponent<Animator>();
+
         Vector3 gravityS = new Vector3(0, gravityStrength, 0);
         Physics.gravity = gravityS;
+
+        moveSpeedStore = moveSpeed;
     }
 
     // Update is called once per frame
@@ -32,6 +40,9 @@ public class PlayerController : MonoBehaviour
             myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpForce, myRigidbody.velocity.z);
             grounded = false;
         }
+
+        myAnimator.SetFloat("Speed", myRigidbody.velocity.z);
+        myAnimator.SetBool("Grounded", grounded);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -40,5 +51,11 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    // If the speed increases
+    public void RestartPlayer()
+    {
+        moveSpeed = moveSpeedStore;
     }
 }
