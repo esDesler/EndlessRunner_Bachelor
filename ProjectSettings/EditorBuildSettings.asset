@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: f63ab4f0fa6a8c049b956ff2e9f853b5
   - enabled: 1
-    path: Assets/Scenes/Endless Runner.unity
+    path: Assets/Scenes/Endless Runner A.unity
+    guid: b410193ded88985429adc6584bc678ba
+  - enabled: 0
+    path: Assets/Scenes/Endless Runner H.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
