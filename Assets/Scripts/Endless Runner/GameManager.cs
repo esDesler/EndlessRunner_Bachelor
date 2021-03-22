@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         theHapticsController = FindObjectOfType<HapticsController>();
 
+
         // Get initial next object from queue
         //nextObstacle = nextObstacleQueue.Dequeue();
         // Send the nextObstacle to the haptics controller
