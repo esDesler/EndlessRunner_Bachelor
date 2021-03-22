@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform thePlatformGenerator;
-    private Vector3 platformStartPoint;
+    public Transform[] theObjectGenerators;
+    private Vector3[] objectsStartPoint;
 
     public PlayerController thePlayer;
     private Vector3 playerStartPoint;
@@ -16,13 +16,36 @@ public class GameManager : MonoBehaviour
 
     private ScoreManager theScoreManager;
 
+    public DeathMenu theDeathMenu;
+
+    public PauseMenu thePauseMenu;
+
+    //public NextObstacleQueue nextObstacleQueue;
+
+    private GameObject nextObstacle;
+
+    private HapticsController theHapticsController;
+
     // Start is called before the first frame update
     void Start()
     {
-        platformStartPoint = thePlatformGenerator.position;
+        objectsStartPoint = new Vector3[theObjectGenerators.Length];
+
+        for (int i = 0; i < theObjectGenerators.Length; i++)
+        {
+            objectsStartPoint[i] = theObjectGenerators[i].position;
+        }
+        
         playerStartPoint = thePlayer.transform.position;
 
         theScoreManager = FindObjectOfType<ScoreManager>();
+
+        theHapticsController = FindObjectOfType<HapticsController>();
+
+        // Get initial next object from queue
+        //nextObstacle = nextObstacleQueue.Dequeue();
+        // Send the nextObstacle to the haptics controller
+        //theHapticsController.updateNextObstacle(nextObstacle);
     }
 
     // Update is called once per frame
@@ -32,25 +55,54 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (thePauseMenu.isActiveAndEnabled)
+            {
+                thePauseMenu.ResumeGame();
+            } else
+            {
+                thePauseMenu.PauseGame();
+            }
+        }
+
+        /*if (thePlayer.transform.position.z > nextObstacle.transform.position.z)
+        {
+            nextObstacle = nextObstacleQueue.Dequeue();
+            theHapticsController.updateNextObstacle(nextObstacle);
+        }*/
     }
 
     public void RestartGame()
     {
-        StartCoroutine("RestartGameCo");
+        theScoreManager.dead = true;
+        thePlayer.gameObject.SetActive(false);
+
+        theDeathMenu.gameObject.SetActive(true);
     }
 
-    public IEnumerator RestartGameCo()
+    public void Reset()
     {
-        theScoreManager.dead = true;
-        yield return new WaitForSeconds(0.5f);
+        theDeathMenu.gameObject.SetActive(false);
+
+        // Destroy objects so they can be reused when the game restarts
         platformList = FindObjectsOfType<PlatformDestroyer>();
         for (int i = 0; i < platformList.Length; i++)
         {
             platformList[i].gameObject.SetActive(false);
         }
 
+        // Reset the players position
         thePlayer.transform.position = playerStartPoint;
-        thePlatformGenerator.position = platformStartPoint;
+
+        // Reset generation points
+        for (int i = 0; i < theObjectGenerators.Length; i++)
+        {
+            theObjectGenerators[i].position = objectsStartPoint[i];
+        }
+
+        thePlayer.gameObject.SetActive(true);
 
         theScoreManager.scoreCount = 0;
         theScoreManager.dead = false;
