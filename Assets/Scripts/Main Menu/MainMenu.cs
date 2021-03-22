@@ -14,6 +14,13 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        // Waits 1 second for quit sound to play
+        StartCoroutine(QuitAfterDelay());
+    }
+
+    private IEnumerator QuitAfterDelay()
+    {
+        yield return new WaitForSeconds(1);
         Application.Quit();
     }
 }
