@@ -12,7 +12,7 @@ public class ObstacleHit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        obstacleHitSound = GameObject.Find("Jump_02").GetComponent<AudioSource>();
+        obstacleHitSound = GameObject.Find("Failed_Action").GetComponent<AudioSource>();
         theScoreManager = FindObjectOfType<ScoreManager>();
     }
 
