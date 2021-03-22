@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnimator;
 
+    public AudioSource jumpSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,9 @@ public class PlayerController : MonoBehaviour
         {
             myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpForce, myRigidbody.velocity.z);
             grounded = false;
+
+            // Play jump sound
+            jumpSound.Play();
         }
 
         myAnimator.SetFloat("Speed", myRigidbody.velocity.z);
