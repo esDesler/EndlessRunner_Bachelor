@@ -12,18 +12,23 @@ public class ObstacleGenerator : MonoBehaviour
 
     public ObjectPooler[] theObstaclePools;
 
+    //public NextObstacleQueue nextObjectQueue;
+
     private void Update()
     {
         if (transform.position.z < generationPoint.position.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 10);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 20);
 
-            obstacleSelector = Random.Range(0, theObstaclePools.Length);
+            // For haptics testing purposes we are only using one obstacle type atm
+            //obstacleSelector = Random.Range(0, theObstaclePools.Length);
+            obstacleSelector = 2;
 
-            GameObject newPlatform = theObstaclePools[obstacleSelector].getPooledObject();
-            newPlatform.transform.position = transform.position;
-            newPlatform.transform.rotation = transform.rotation;
-            newPlatform.SetActive(true);
+            GameObject newObstacle = theObstaclePools[obstacleSelector].getPooledObject();
+            newObstacle.transform.position = transform.position;
+            newObstacle.SetActive(true);
+
+            //nextObjectQueue.Enqueue(newObstacle);
         }
     }
 
@@ -35,5 +40,6 @@ public class ObstacleGenerator : MonoBehaviour
         position = new Vector3(position.x, position.y, position.z + randomOffset);
         obstacle1.transform.position = position;
         obstacle1.SetActive(true);
+
     }
 }
