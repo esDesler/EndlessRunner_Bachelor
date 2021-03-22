@@ -24,7 +24,6 @@ public class PlatformGenerator : MonoBehaviour
             
             GameObject newPlatform = thePlatformPool.getPooledObject();
             newPlatform.transform.position = transform.position;
-            newPlatform.transform.rotation = transform.rotation;
             newPlatform.SetActive(true);
         }
     }
