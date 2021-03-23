@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public PlayerController thePlayer;
     private Vector3 playerStartPoint;
 
+    public GameObject initialObstacle;
+
     public float distance;
 
     private PlatformDestroyer[] platformList;
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        thePlayer.PauseState(thePauseMenu.isActiveAndEnabled);
+
         /*if (thePlayer.transform.position.z > nextObstacle.transform.position.z)
         {
             nextObstacle = nextObstacleQueue.Dequeue();
@@ -104,6 +108,7 @@ public class GameManager : MonoBehaviour
         }
 
         thePlayer.gameObject.SetActive(true);
+        initialObstacle.SetActive(true);
 
         theScoreManager.scoreCount = 0;
         theScoreManager.dead = false;
