@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource jumpSound;
 
+    private bool paused;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, myRigidbody.velocity.y, moveSpeed);
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && grounded)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && grounded && !paused)
         {
             myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpForce, myRigidbody.velocity.z);
             grounded = false;
@@ -62,5 +64,10 @@ public class PlayerController : MonoBehaviour
     public void RestartPlayer()
     {
         moveSpeed = moveSpeedStore;
+    }
+
+    public void PauseState(bool state)
+    {
+        paused = state;
     }
 }
