@@ -16,7 +16,7 @@ public class ArduinoCommunicator : MonoBehaviour
         foreach (string mysps in SerialPort.GetPortNames())
         {
             print(mysps);
-            if (mysps != "COM1") { the_com = mysps; cArduino = true; break; }
+            if (mysps != "COM1") { the_com = "COM7"; cArduino = true; break; }
         }
 
         if (cArduino)
