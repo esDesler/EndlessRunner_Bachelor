@@ -10,6 +10,7 @@ public class DeathMenu : MonoBehaviour
 
     public Text RunningScore;
     public Text ObstaclesHit;
+    public Text ObstaclesAvoided;
 
     private ScoreManager theScoreManager;
 
@@ -32,5 +33,6 @@ public class DeathMenu : MonoBehaviour
     {
         RunningScore.text = "Running Score: " + Mathf.Round(theScoreManager.scoreCount);
         ObstaclesHit.text = "Obstacles Hit: " + theScoreManager.errorsCount;
+        ObstaclesAvoided.text = "Obstacles Avoided: " + theScoreManager.successCount;
     }
 }

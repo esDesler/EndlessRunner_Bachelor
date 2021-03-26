@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private HapticsController theHapticsController;
 
+    private SuccessCounter successCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         theScoreManager = FindObjectOfType<ScoreManager>();
 
         theHapticsController = FindObjectOfType<HapticsController>();
+
+
 
 
         // Get initial next object from queue

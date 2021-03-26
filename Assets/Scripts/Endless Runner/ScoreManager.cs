@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public float scoreCount;
     public float highScoreCount;
     public int errorsCount;
+    public int successCount;
 
     public float pointsPerSecond;
 
@@ -50,5 +51,10 @@ public class ScoreManager : MonoBehaviour
     public void applyPenalty(float amount)
     {
         scoreCount -= amount;
+    }
+
+    public void AddSuccessCount()
+    {
+        successCount++;
     }
 }
