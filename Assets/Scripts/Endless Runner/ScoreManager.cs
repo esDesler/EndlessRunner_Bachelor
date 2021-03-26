@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     public float scoreCount;
     public float highScoreCount;
-    public float errorsCount;
+    public int errorsCount;
 
     public float pointsPerSecond;
 
