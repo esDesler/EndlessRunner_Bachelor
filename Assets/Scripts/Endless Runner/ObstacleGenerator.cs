@@ -18,7 +18,8 @@ public class ObstacleGenerator : MonoBehaviour
     {
         if (transform.position.z < generationPoint.position.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 20);
+            float randomOffset = Random.Range(-offsetRange, offsetRange);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + randomOffset + (20 + offsetRange));
 
             // For haptics testing purposes we are only using one obstacle type atm
             //obstacleSelector = Random.Range(0, theObstaclePools.Length);
