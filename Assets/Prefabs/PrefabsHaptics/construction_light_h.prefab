@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 8498093333100623399}
   - component: {fileID: 7361755119678890021}
   - component: {fileID: 6983304735617404508}
+  - component: {fileID: 4731608030030140531}
   m_Layer: 0
   m_Name: SuccessfulJumpIndicator
   m_TagString: Untagged
@@ -318,6 +319,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be0c15c3eda5cdd4180c32237e6a83f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4731608030030140531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215302850570963198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84d1bab524acc143a2ae93259d98979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8877779780305615730
