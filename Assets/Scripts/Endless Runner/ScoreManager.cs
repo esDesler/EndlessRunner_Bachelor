@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,25 @@ public class ScoreManager : MonoBehaviour
 
     public bool dead;
 
-    private string highScoreKey = "HighScore";
+    private string highScoreKeyAudio = "HighScore audio";
+    private string highScoreKeyHaptic = "HighScore haptic";
+    private string highScoreKeyVisual = "HighScore visual";
+
+    private int gamemode;
 
     // Start is called before the first frame update
     void Start()
     {
-        highScoreCount = PlayerPrefs.GetFloat(highScoreKey, 0);
+        if (gamemode == 0)
+        {
+            highScoreCount = PlayerPrefs.GetFloat(highScoreKeyAudio, 0);
+        } else if (gamemode == 1)
+        {
+            highScoreCount = PlayerPrefs.GetFloat(highScoreKeyHaptic, 0);
+        } else
+        {
+            highScoreCount = PlayerPrefs.GetFloat(highScoreKeyVisual, 0);
+        }
     }
 
     // Update is called once per frame
@@ -36,7 +50,18 @@ public class ScoreManager : MonoBehaviour
         if (scoreCount > highScoreCount)
         {
             highScoreCount = scoreCount;
-            PlayerPrefs.SetFloat(highScoreKey, highScoreCount);
+            if (gamemode == 0)
+            {
+                PlayerPrefs.SetFloat(highScoreKeyAudio, highScoreCount);
+            }
+            else if (gamemode == 1)
+            {
+                PlayerPrefs.SetFloat(highScoreKeyHaptic, highScoreCount);
+            }
+            else
+            {
+                PlayerPrefs.SetFloat(highScoreKeyVisual, highScoreCount);
+            }
         }
 
         scoreText.text = "Score: " + Mathf.Round(scoreCount);
@@ -50,11 +75,38 @@ public class ScoreManager : MonoBehaviour
 
     public void applyPenalty(float amount)
     {
-        scoreCount -= amount;
+        scoreCount -= 0;
     }
 
     public void AddSuccessCount()
     {
         successCount++;
+    }
+
+    public void Reset()
+    {
+        scoreCount = 0;
+        errorsCount = 0;
+        successCount = 0;
+        dead = false;
+    }
+
+    internal void ResetHighscore()
+    {
+        highScoreCount = 0;
+        PlayerPrefs.SetFloat(highScoreKeyAudio, highScoreCount);
+        PlayerPrefs.SetFloat(highScoreKeyHaptic, highScoreCount);
+        PlayerPrefs.SetFloat(highScoreKeyVisual, highScoreCount);
+        highScoreText.text = "High Score: 0";
+    }
+
+    public void SetPointsPerSecond(float pointsPerSecond)
+    {
+        this.pointsPerSecond = pointsPerSecond;
+    }
+
+    public void SetGamemode(int value)
+    {
+        this.gamemode = value;
     }
 }

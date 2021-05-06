@@ -67,42 +67,42 @@ public class HapticsController : MonoBehaviour
 
     public void Hundred()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,1000,0;");
+        theArduinoCommunicator.SendMessage("M0,1,100,200,0;");
     }
 
     public void Ninety()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,900,0;");
+        theArduinoCommunicator.SendMessage("M0,1,90,200,0;");
     }
 
     public void Eighty()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,800,0;");
+        theArduinoCommunicator.SendMessage("M0,1,80,200,0;");
     }
 
     public void Seventy()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,700,0;");
+        theArduinoCommunicator.SendMessage("M0,1,70,200,0;");
     }
 
     public void Sixty()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,600,0;");
+        theArduinoCommunicator.SendMessage("M0,1,60,200,0;");
     }
 
     public void Fifty()
     {
-        theArduinoCommunicator.SendMessage("M0,1,80,500,0;");
+        theArduinoCommunicator.SendMessage("M0,1,50,200,0;");
     }
 
     public void Fourty()
     {
-        theArduinoCommunicator.SendMessage("M0,1,80,400,0;");
+        theArduinoCommunicator.SendMessage("M0,1,40,200,0;");
     }
 
     public void Thirty()
     {
-        theArduinoCommunicator.SendMessage("M0,1,80,300,0;");
+        theArduinoCommunicator.SendMessage("M0,1,80,200,0;");
     }
 
     public void Twenty()
@@ -112,7 +112,7 @@ public class HapticsController : MonoBehaviour
 
     public void Ten()
     {
-        theArduinoCommunicator.SendMessage("M0,1,80,100,0;");
+        theArduinoCommunicator.SendMessage("M0,1,80,200,0;");
     }
 
     public void Far()
@@ -132,7 +132,7 @@ public class HapticsController : MonoBehaviour
 
     public void Now()
     {
-        theArduinoCommunicator.SendMessage("M0,1,100,500,0;");
+        theArduinoCommunicator.SendMessage("M0,1,80,500,0;");
     }
 
     /*public void updateNextObstacle(GameObject nextObstacle)

@@ -12,16 +12,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(endlessRunner);
     }
 
-    public void PlayHapticGame()
-    {
-        SceneManager.LoadScene("Endless Runner H");
-    }
-
-    public void PlayVisualGame()
-    {
-        SceneManager.LoadScene("Endless Runner V");
-    }
-
     public void QuitGame()
     {
         // Waits 1 second for quit sound to play

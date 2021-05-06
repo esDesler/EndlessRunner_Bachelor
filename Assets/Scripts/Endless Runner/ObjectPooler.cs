@@ -13,6 +13,8 @@ public class ObjectPooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("Audio: " + PlayerPrefs.GetInt("audio mode") + " Haptic: " + PlayerPrefs.GetInt("haptic mode") + " Visual: " + PlayerPrefs.GetInt("visual mode"));
+        //Debug.Log(pooledObject.name);
         pooledObjects = new List<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
@@ -21,7 +23,6 @@ public class ObjectPooler : MonoBehaviour
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
-        
     }
 
     public GameObject getPooledObject()
@@ -40,5 +41,10 @@ public class ObjectPooler : MonoBehaviour
         pooledObjects.Add(obj);
 
         return obj;
+    }
+
+    public void SetPooledObject(GameObject poolObject)
+    {
+        this.pooledObject = poolObject;
     }
 }

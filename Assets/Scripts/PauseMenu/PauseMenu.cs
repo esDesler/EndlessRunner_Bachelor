@@ -12,31 +12,28 @@ public class PauseMenu : MonoBehaviour
 
     public Button theResumeButton;
 
-    private AudioSource endlessRunnerMusic;
+    /*private AudioSource endlessRunnerMusic;
     private AudioSource MenuHover;
-    private AudioSource MenuArrowUp;
-    private AudioSource MenuClick;
+    private AudioSource MenuClick;*/
 
     private void Awake()
     {
-        endlessRunnerMusic = GameObject.Find("EndlessRunnerMusic").GetComponent<AudioSource>();
+        /*endlessRunnerMusic = GameObject.Find("EndlessRunnerMusic").GetComponent<AudioSource>();
         MenuHover = GameObject.Find("Menu_Hover").GetComponent<AudioSource>();
-        MenuArrowUp = GameObject.Find("Menu_Arrow_Up").GetComponent<AudioSource>();
         MenuClick = GameObject.Find("Menu_Click").GetComponent<AudioSource>();
 
 
         endlessRunnerMusic.ignoreListenerPause = true;
         MenuHover.ignoreListenerPause = true;
-        MenuArrowUp.ignoreListenerPause = true;
-        MenuClick.ignoreListenerPause = true;
+        MenuClick.ignoreListenerPause = true;*/
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
         thePauseMenu.SetActive(true);
-        theResumeButton.Select();
-        PauseGameMusic(true);
+        //theResumeButton.Select();
+        //PauseGameMusic(true);
     }
 
     public void ResumeGame()

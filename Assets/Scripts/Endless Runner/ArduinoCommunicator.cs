@@ -16,7 +16,7 @@ public class ArduinoCommunicator : MonoBehaviour
         foreach (string mysps in SerialPort.GetPortNames())
         {
             print(mysps);
-            if (mysps != "COM1") { the_com = "COM7"; cArduino = true; break; }
+            if (mysps != "COM1") { the_com = mysps; cArduino = true; break; }
         }
 
         if (cArduino)
@@ -29,7 +29,7 @@ public class ArduinoCommunicator : MonoBehaviour
                 sp.ReadTimeout = 100;
                 sp.WriteTimeout = 100;
                 sp.Handshake = Handshake.None;
-                if (sp.IsOpen) { print("Open"); /* Readies the arduino for com.*/  sp.WriteLine("M0,0,70,0,0;M1,0,80,1000,1000;M2,0,80,1000,1000;M3,0,80,1000,1000;"); }
+                if (sp.IsOpen) { print("Open"); /* Readies the arduino for com.*/  sp.WriteLine("M0,0,70,0,0;"); }
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,17 @@ public class GameManager : MonoBehaviour
     public PlayerController thePlayer;
     private Vector3 playerStartPoint;
 
-    public GameObject initialObstacle;
+    public ObjectPooler jumpObstaclePool;
+    public ObjectPooler slideObstaclePool;
+
+    public GameObject jumpObstacleVisual;
+    public GameObject jumpObstacleAudio;
+    public GameObject jumpObstacleHaptic;
+    public GameObject slideObstacleVisual;
+    public GameObject slideObstacleAudio;
+    public GameObject slideObstacleHaptic;
+
+    public GameObject blackScreen;
 
     public float distance;
 
@@ -30,24 +41,61 @@ public class GameManager : MonoBehaviour
 
     private SuccessCounter successCounter;
 
+    enum Gamemode
+    {
+        Audio,
+        Haptic,
+        Visual
+    }
+
+    private Enum gamemode;
+
+    private void Awake()
+    {
+        theScoreManager = FindObjectOfType<ScoreManager>();
+        // Set obstacles used according to selected game mode
+        if (Convert.ToBoolean(PlayerPrefs.GetInt("audio mode")))
+        {
+            jumpObstaclePool.SetPooledObject(jumpObstacleAudio);
+            slideObstaclePool.SetPooledObject(slideObstacleAudio);
+            gamemode = Gamemode.Audio;
+            blackScreen.gameObject.SetActive(true);
+            theScoreManager.SetGamemode(0);
+        }
+        else if (Convert.ToBoolean(PlayerPrefs.GetInt("haptic mode")))
+        {
+            jumpObstaclePool.SetPooledObject(jumpObstacleHaptic);
+            slideObstaclePool.SetPooledObject(slideObstacleHaptic);
+            gamemode = Gamemode.Haptic;
+            blackScreen.gameObject.SetActive(true);
+            theScoreManager.SetGamemode(1);
+        }
+        else
+        {
+            jumpObstaclePool.SetPooledObject(jumpObstacleVisual);
+            slideObstaclePool.SetPooledObject(slideObstacleVisual);
+            gamemode = Gamemode.Visual;
+            blackScreen.gameObject.SetActive(false);
+            theScoreManager.SetGamemode(2);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        theHapticsController = FindObjectOfType<HapticsController>();
+
+        // Initiate startpoint for obstacles and visual objects in the scene
         objectsStartPoint = new Vector3[theObjectGenerators.Length];
 
         for (int i = 0; i < theObjectGenerators.Length; i++)
         {
             objectsStartPoint[i] = theObjectGenerators[i].position;
         }
-        
+
         playerStartPoint = thePlayer.transform.position;
 
-        theScoreManager = FindObjectOfType<ScoreManager>();
-
-        theHapticsController = FindObjectOfType<HapticsController>();
-
-
-
+        PerformanceTracker.CreateDirectory();
 
         // Get initial next object from queue
         //nextObstacle = nextObstacleQueue.Dequeue();
@@ -58,20 +106,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (thePlayer.transform.position.z > distance)
+        /*if (thePlayer.transform.position.z > distance)
         {
             RestartGame();
+        }*/
+
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Resetting highscore");
+            theScoreManager.ResetHighscore();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            if (thePauseMenu.isActiveAndEnabled)
-            {
-                thePauseMenu.ResumeGame();
-            } else
+            if (!thePauseMenu.isActiveAndEnabled && !theScoreManager.dead)
             {
                 thePauseMenu.PauseGame();
             }
+        }
+
+        if (theScoreManager.errorsCount >= 1 && !theDeathMenu.isActiveAndEnabled)
+        {
+            RestartGame();
         }
 
         thePlayer.PauseState(thePauseMenu.isActiveAndEnabled);
@@ -85,6 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        PerformanceTracker.WritePerformance((int)Math.Round(theScoreManager.scoreCount), gamemode.ToString());
         theScoreManager.dead = true;
         thePlayer.gameObject.SetActive(false);
 
@@ -112,9 +169,8 @@ public class GameManager : MonoBehaviour
         }
 
         thePlayer.gameObject.SetActive(true);
-        initialObstacle.SetActive(true);
 
-        theScoreManager.scoreCount = 0;
-        theScoreManager.dead = false;
+        theScoreManager.Reset();
+        thePlayer.RestartPlayer();
     }
 }

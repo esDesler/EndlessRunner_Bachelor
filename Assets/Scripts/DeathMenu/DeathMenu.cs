@@ -8,9 +8,8 @@ public class DeathMenu : MonoBehaviour
 {
     public string mainMenu;
 
-    public Text RunningScore;
-    public Text ObstaclesHit;
-    public Text ObstaclesAvoided;
+    public Text Score;
+    public Text Highscore;
 
     private ScoreManager theScoreManager;
 
@@ -31,8 +30,7 @@ public class DeathMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        RunningScore.text = "Running Score: " + Mathf.Round(theScoreManager.scoreCount);
-        ObstaclesHit.text = "Obstacles Hit: " + theScoreManager.errorsCount;
-        ObstaclesAvoided.text = "Obstacles Avoided: " + theScoreManager.successCount;
+        Score.text = "Score: " + Mathf.Round(theScoreManager.scoreCount);
+        Highscore.text = "Highscore: " + Mathf.Round(theScoreManager.highScoreCount);
     }
 }
