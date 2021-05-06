@@ -471,6 +471,7 @@ Transform:
   - {fileID: 1576882210}
   - {fileID: 1127183499}
   - {fileID: 597174507}
+  - {fileID: 1316805508}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -803,7 +804,7 @@ GameObject:
   - component: {fileID: 252635055}
   - component: {fileID: 252635054}
   m_Layer: 0
-  m_Name: ObstaclePoolCone
+  m_Name: ObstaclePoolSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8e6165bc3cb4d4caa3ae39a30059db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObject: {fileID: 6589382450796353806, guid: fb2524eb0ff1b484e86629840d329248, type: 3}
+  pooledObject: {fileID: 3031916482234430492, guid: 5f8ddffe8fd60a445802f4200d3d5162, type: 3}
   poolSize: 6
 --- !u!4 &252635055
 Transform:
@@ -1995,6 +1996,11 @@ PrefabInstance:
 --- !u!4 &713200748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2101655434590648871, guid: 2be0e5293ffce904b85bdfc4c251a3e3, type: 3}
+  m_PrefabInstance: {fileID: 713200747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &713200749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3411438838025610101, guid: 2be0e5293ffce904b85bdfc4c251a3e3, type: 3}
   m_PrefabInstance: {fileID: 713200747}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &785574012
@@ -3314,6 +3320,133 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 8858090278566181348, guid: d6f8d8b957d6b6745a5a71bfcbe30a2d, type: 3}
   poolSize: 6
+--- !u!1 &1316805507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316805508}
+  - component: {fileID: 1316805509}
+  m_Layer: 0
+  m_Name: Slide_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1316805508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316805507}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.4958668, y: -4.627655, z: -17.14475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 164778679}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1316805509
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316805507}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e701ee36f712d324b80b2a191c185970, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1353447252
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,7 +3540,10 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 7
   gravityStrength: -20
+  lenghtOfSlide: 0.6
+  reducedHeight: 2.5
   grounded: 1
+  sliding: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -3415,6 +3551,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpSound: {fileID: 1959747003}
+  slideSound: {fileID: 1316805509}
 --- !u!54 &1367410738
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3480,7 +3617,7 @@ MonoBehaviour:
   - {fileID: 861265195}
   - {fileID: 1741236196}
   thePlayer: {fileID: 1367410735}
-  initialObstacle: {fileID: 0}
+  initialObstacle: {fileID: 713200749}
   distance: 400
   theDeathMenu: {fileID: 1353447254}
   thePauseMenu: {fileID: 1731175961}
@@ -4440,9 +4577,8 @@ MonoBehaviour:
   offsetRange: 3
   generationPoint: {fileID: 334459427}
   theObstaclePools:
-  - {fileID: 252635054}
-  - {fileID: 1814878854}
   - {fileID: 1917230397}
+  - {fileID: 252635054}
 --- !u!4 &1764993495
 Transform:
   m_ObjectHideFlags: 0
@@ -4455,7 +4591,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 252635055}
-  - {fileID: 1814878853}
   - {fileID: 1917230396}
   m_Father: {fileID: 601660323}
   m_RootOrder: 1
@@ -4553,51 +4688,6 @@ Transform:
   m_Father: {fileID: 832470699}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 47, y: 23, z: 0}
---- !u!1 &1814878852
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1814878853}
-  - component: {fileID: 1814878854}
-  m_Layer: 0
-  m_Name: ObstaclePoolBarrier
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1814878853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814878852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1764993495}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1814878854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814878852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8e6165bc3cb4d4caa3ae39a30059db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObject: {fileID: 9000406115820452875, guid: 5e8db085896777b4cb88015651b746e2, type: 3}
-  poolSize: 6
 --- !u!4 &1880373153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65242c3ccb48eb641af1bae3570d1fda, type: 3}
@@ -4790,7 +4880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1764993495}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1917230397
 MonoBehaviour:
