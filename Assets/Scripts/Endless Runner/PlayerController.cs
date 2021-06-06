@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         if (!sliding)
         {
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && grounded && !paused)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && grounded && !paused)
             {
                 myRigidbody.velocity = new Vector3(0, jumpForce, myRigidbody.velocity.z);
                 grounded = false;

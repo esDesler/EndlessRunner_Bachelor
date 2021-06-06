@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         theScoreManager = FindObjectOfType<ScoreManager>();
         // Set obstacles used according to selected game mode
-        if (Convert.ToBoolean(PlayerPrefs.GetInt("audio mode")))
+        if (Convert.ToBoolean(PlayerPrefs.GetInt("audio mode", 1)))
         {
             jumpObstaclePool.SetPooledObject(jumpObstacleAudio);
             slideObstaclePool.SetPooledObject(slideObstacleAudio);
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             blackScreen.gameObject.SetActive(true);
             theScoreManager.SetGamemode(0);
         }
-        else if (Convert.ToBoolean(PlayerPrefs.GetInt("haptic mode")))
+        else if (Convert.ToBoolean(PlayerPrefs.GetInt("haptic mode", 0)))
         {
             jumpObstaclePool.SetPooledObject(jumpObstacleHaptic);
             slideObstaclePool.SetPooledObject(slideObstacleHaptic);
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             blackScreen.gameObject.SetActive(true);
             theScoreManager.SetGamemode(1);
         }
-        else
+        else if (Convert.ToBoolean(PlayerPrefs.GetInt("visual mode", 0)))
         {
             jumpObstaclePool.SetPooledObject(jumpObstacleVisual);
             slideObstaclePool.SetPooledObject(slideObstacleVisual);
